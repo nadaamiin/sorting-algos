@@ -17,7 +17,6 @@ public class Main {
             System.out.println("7-Exit");
             int choice;
             GenerateArr generateArr;
-            int size;
             System.out.print("Enter your choice: ");
             while(true){
                 try {
@@ -34,19 +33,21 @@ public class Main {
                     scanner.nextLine();
                 }
             }
-            if (choice == 2) {
-                System.out.println("Enter the size of the array");
-                size = scanner.nextInt();
-                generateArr = new GenerateArr(size);
-                generateArr.generate();
+            if (choice == 1) {
+                generateArr = new GenerateArr();
+                generateArr.createArr();
+            }
+            else if (choice == 2) {
+                generateArr = new GenerateArr();
+                generateArr.generateArr();
             }
             else if (choice == 7){
                 System.out.println("Goodbye!\uD83D\uDC4B");
                 break;
             }
+            System.out.println("Press enter to continue...");
+            scanner.nextLine();
+            scanner.nextLine();
         }
-
     }
 }
-
-
