@@ -1,8 +1,51 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
+
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to SortMaster\n--------------------------");
-        System.out.println("Do you want to\n1-Enter your array\n2-Generate an array");
+
+        while (true){
+            // Options of the program
+            System.out.println("Do you want to\n1-Enter your array");
+            System.out.println("2-Generate an array");
+            System.out.println("3-Sorting algorithm analysis");
+            System.out.println("4-Sort in ascending or descending order");
+            System.out.println("5-Compare 2 Sorting Algorithms Performance");
+            System.out.println("6-Search for an Element in the Sorted Array");
+            System.out.println("7-Exit");
+            int choice;
+            GenerateArr generateArr;
+            int size;
+            System.out.print("Enter your choice: ");
+            while(true){
+                try {
+                    choice = scanner.nextInt();
+
+                    if (choice < 1 || choice > 7) {
+                        System.err.println("Invalid choice! Please enter a number between 1 and 7:");
+                        continue;  // Restart loop
+                    }
+                    break;
+                } catch (InputMismatchException e) {
+                    System.err.println("Invalid input! Please enter a valid number:");
+                    // Clear invalid input
+                    scanner.nextLine();
+                }
+            }
+            if (choice == 2) {
+                System.out.println("Enter the size of the array");
+                size = scanner.nextInt();
+                generateArr = new GenerateArr(size);
+                generateArr.generate();
+            }
+            else if (choice == 7){
+                System.out.println("Goodbye!");
+                break;
+            }
+        }
+
     }
 }
 
