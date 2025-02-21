@@ -41,7 +41,7 @@ public class Main {
                 generateArr.generate();
             }
             else if (choice == 7){
-                System.out.println("Goodbye!");
+                System.out.println("Goodbye!\uD83D\uDC4B");
                 break;
             }
         }
