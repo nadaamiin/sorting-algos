@@ -60,6 +60,12 @@ public class Main {
                             sortingAlgos.insertionSort();
                         }else if (choose_algorithm == 3){
                             sortingAlgos.bubbleSort();
+                        }else if (choose_algorithm == 4){
+                            sortingAlgos.shellSort();
+                        }else if (choose_algorithm == 5){
+                            sortingAlgos.mergeSort();
+                        }else if (choose_algorithm == 6){
+                            sortingAlgos.bubbleSort();
                         }
                     }
                     System.out.println("Do you want to:");
