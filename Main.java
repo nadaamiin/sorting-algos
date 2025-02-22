@@ -35,6 +35,13 @@ public class Main {
             }
 
             int choice3 = 0;
+            String sort_algorithms = """
+                    1-Selection sort
+                    2-Insertion sort
+                    3-Bubble sort
+                    4-Shell sort
+                    5-Merge sort
+                    6-Quick sort""";
             if(choice1 == 1 || choice1 == 2){
                 while (true){
                     System.out.println("You can now choose the service you want:");
@@ -45,6 +52,7 @@ public class Main {
                     int choice2 = getChoice(4);
                     if (choice2 == 1){
                         SortingAlgos sortingAlgos = new SortingAlgos(array);
+                        sortingAlgos.selectionSort();
                     }
                     System.out.println("Do you want to:");
                     System.out.println("1-Choose another service");
