@@ -50,9 +50,17 @@ public class Main {
                     System.out.println("3-Compare 2 Sorting Algorithms Performance");
                     System.out.println("4-Search for an Element in the Sorted Array");
                     int choice2 = getChoice(4);
+                    SortingAlgos sortingAlgos = new SortingAlgos(array);
                     if (choice2 == 1){
-                        SortingAlgos sortingAlgos = new SortingAlgos(array);
-                        sortingAlgos.selectionSort();
+                        System.out.println("\n-->Choose a sorting algorithm:\n" + sort_algorithms);
+                        int choose_algorithm = getChoice(6);
+                        if (choose_algorithm == 1){
+                            sortingAlgos.selectionSort();
+                        }else if (choose_algorithm == 2){
+                            sortingAlgos.insertionSort();
+                        }else if (choose_algorithm == 3){
+                            sortingAlgos.bubbleSort();
+                        }
                     }
                     System.out.println("Do you want to:");
                     System.out.println("1-Choose another service");
