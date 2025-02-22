@@ -6,7 +6,6 @@ public class SortingAlgos {
 
     public SortingAlgos(int[] arr) {
         this.arr = Arrays.copyOf(arr, arr.length);
-        this.arr = arr;
         n = arr.length;
     }
 
