@@ -5,19 +5,22 @@ public class GenerateArr {
     Scanner scanner = new Scanner(System.in);
     int size;
     int[] arr;
-    public GenerateArr() {
+
+    public GenerateArr() {}
+    public void generateArr() {
         System.out.println("Enter the size of the array");
         size = scanner.nextInt();
         arr = new int[size];
-    }
-    public void generateArr() {
         for (int i = 0; i < size; i++) {
             // Generate numbers from 1 to 20
             arr[i] = ThreadLocalRandom.current().nextInt(1, 21);
         }
         printArr();
     }
-    public void createArr(){
+    public void createArr() {
+        System.out.println("Enter the size of the array");
+        size = scanner.nextInt();
+        arr = new int[size];
         System.out.println("-> Enter your array seperated by spaces: ");
         while (true) {
             try {
@@ -35,7 +38,7 @@ public class GenerateArr {
     }
     // Function to print the array
     public void printArr(){
-        System.out.print("The array is: (");
+        System.out.print("Your array is: (");
         for (int i = 0; i < size; i++) {
             System.out.print(arr[i]);
             if (i != size - 1) {
