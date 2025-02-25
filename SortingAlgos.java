@@ -23,52 +23,11 @@ public class SortingAlgos {
         System.out.println(")");
     }
 
-    public void bubbleSort() {
-        System.out.println("**Bubble Sort**\n------------------");
-        printArr("The original");
-        long startTime = System.nanoTime();
-        comparisons = 0;
-        swaps = 0;
-
-        for (int i = 0; i < n - 1; i++) {
-            boolean swapped = false;
-            System.out.println("Pass " + (i + 1) + ":");
-            for (int j = 0; j < n - i - 1; j++) {
-                comparisons++;
-                if (arr[j] > arr[j + 1]) {
-                    // Swap arr[j] and arr[j + 1]
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                    swaps++;
-                    swapped = true;
-                    System.out.println("Swapping " + arr[j] + " and " + arr[j + 1]);
-                }
-            }
-            printArr("Edited");
-            if (!swapped) {
-                System.out.println("No swapping happened in this pass");
-            }
-            System.out.println();
-        }
-
-        long endTime = System.nanoTime();
-        printArr("\nThe final");
-        System.out.println();
-        System.out.println("Total Comparisons: " + comparisons);
-        System.out.println("Total Swaps: " + swaps);
-        System.out.println("""
-                            \nTime Complexity analysis:
-                            Best Case: O(n)
-                            Worst Case: O(n^2)
-                            Average Case: O(n^2)""");
-
-        System.out.println("Execution Time: " + (endTime - startTime) + " nanoseconds");
-        System.out.println("------------------------------------");
-    }
-
     public void selectionSort() {
-        System.out.println("**Selection Sort**\n------------------");
+        System.out.println("""
+                            **Selection Sort**
+                            Finds the smallest element in the array and swaps it with the first unsorted element.
+                            ------------------------------------------------------------------------------------""");
         printArr("The original");
         long startTime = System.nanoTime();
         comparisons = 0;
@@ -112,7 +71,10 @@ public class SortingAlgos {
     }
 
     public void insertionSort() {
-        System.out.println("**Insertion Sort**\n------------------");
+        System.out.println("""
+    **Insertion Sort**
+    Builds a sorted array one element at a time by shifting larger elements to the right. Best for nearly sorted data.
+    ------------------------------------------------------------------------------------------------------------------""");
         printArr("The original");
         long startTime = System.nanoTime();
         comparisons = 0;
@@ -157,8 +119,58 @@ public class SortingAlgos {
         System.out.println("------------------------------------");
     }
 
+    public void bubbleSort() {
+        System.out.println("""
+        **Bubble Sort**
+        Repeatedly swaps adjacent elements if they are in the wrong order. Simple but inefficient for large lists.
+        ---------------------------------------------------------------------------------------------------------""");
+        printArr("The original");
+        long startTime = System.nanoTime();
+        comparisons = 0;
+        swaps = 0;
+
+        for (int i = 0; i < n - 1; i++) {
+            boolean swapped = false;
+            System.out.println("Pass " + (i + 1) + ":");
+            for (int j = 0; j < n - i - 1; j++) {
+                comparisons++;
+                if (arr[j] > arr[j + 1]) {
+                    // Swap arr[j] and arr[j + 1]
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    swaps++;
+                    swapped = true;
+                    System.out.println("Swapping " + arr[j] + " and " + arr[j + 1]);
+                }
+            }
+            printArr("Edited");
+            if (!swapped) {
+                System.out.println("No swapping happened in this pass");
+            }
+            System.out.println();
+        }
+
+        long endTime = System.nanoTime();
+        printArr("\nThe final");
+        System.out.println();
+        System.out.println("Total Comparisons: " + comparisons);
+        System.out.println("Total Swaps: " + swaps);
+        System.out.println("""
+                            \nTime Complexity analysis:
+                            Best Case: O(n)
+                            Worst Case: O(n^2)
+                            Average Case: O(n^2)""");
+
+        System.out.println("Execution Time: " + (endTime - startTime) + " nanoseconds");
+        System.out.println("------------------------------------");
+    }
+
     public void shellSort() {
-        System.out.println("**Shell Sort**\n------------------");
+        System.out.println("""
+        **Shell Sort**
+        An improved version of insertion sort that uses gap-based sorting to move elements faster.
+        ------------------------------------------------------------------------------------------""");
         printArr("The original");
         long startTime = System.nanoTime();
         comparisons = 0;
@@ -215,7 +227,10 @@ public class SortingAlgos {
 
     // Merge Sort Implementation with Detailed Tracing
     public void mergeSort() {
-        System.out.println("\n**Merge Sort**\n------------------");
+        System.out.println("""
+        **Merge Sort**
+        A divide-and-conquer algorithm that splits the array into halves, sorts them, and merges them back.
+        --------------------------------------------------------------------------------------------------""");
         printArr("The original");
 
         comparisons = 0; // Reset counts before sorting
@@ -298,4 +313,75 @@ public class SortingAlgos {
         }
 
         System.out.println("Merged: " + Arrays.toString(Arrays.copyOfRange(arr, left, right + 1)));
-    }}
+    }
+
+    public void compareSortingPerformance(String algo1, String algo2) {
+        int[] originalArray = Arrays.copyOf(arr, arr.length);
+
+        // Run First Algorithm
+        System.out.println("\n** Comparing " + algo1 + " vs " + algo2 + " **");
+        System.out.println("------------------------------------");
+        System.out.println("Running " + algo1 + "...");
+        comparisons = 0;
+        swaps = 0;
+        executionTime = 0;        sortUsingAlgorithm(algo1, originalArray);
+        long time1 = executionTime;
+        int comp1 = comparisons;
+        int swap1 = swaps;
+
+        // Run Second Algorithm
+        System.out.println("\nRunning " + algo2 + "...");
+        comparisons = 0;
+        swaps = 0;
+        executionTime = 0;
+        sortUsingAlgorithm(algo2, originalArray);
+        long time2 = executionTime;
+        int comp2 = comparisons;
+        int swap2 = swaps;
+
+        // Display Results
+        System.out.println("\n** Performance Comparison **");
+        System.out.printf("%-20s %-15s %-15s %-15s%n", "Algorithm", "Time (ns)", "Comparisons", "Swaps/Shifts");
+        System.out.printf("%-20s %-15d %-15d %-15d%n", algo1, time1, comp1, swap1);
+        System.out.printf("%-20s %-15d %-15d %-15d%n", algo2, time2, comp2, swap2);
+    }
+    private long executionTime;
+
+    private void sortUsingAlgorithm(String algo, int[] array) {
+        arr = Arrays.copyOf(array, array.length); // Restore original array
+        long startTime = System.nanoTime();
+
+        // Suppress output
+        java.io.PrintStream originalOut = System.out;
+        System.setOut(new java.io.PrintStream(new java.io.OutputStream() {
+            public void write(int b) {} // Do nothing
+        }));
+
+        switch (algo.toLowerCase()) {
+            case "bubble":
+                bubbleSort();
+                break;
+            case "selection":
+                selectionSort();
+                break;
+            case "insertion":
+                insertionSort();
+                break;
+            case "merge":
+                mergeSort();
+                break;
+            case "shell":
+                shellSort();
+                break;
+            default:
+                System.setOut(originalOut);
+                System.out.println("Invalid algorithm name.");
+                return;
+        }
+
+        // Restore output
+        System.setOut(originalOut);
+        executionTime = System.nanoTime() - startTime;
+    }
+
+}

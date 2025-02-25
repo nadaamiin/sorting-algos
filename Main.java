@@ -40,16 +40,13 @@ public class Main {
                     2-Insertion sort
                     3-Bubble sort
                     4-Shell sort
-                    5-Merge sort
-                    6-Quick sort""";
+                    5-Merge sort""";
             if(choice1 == 1 || choice1 == 2){
                 while (true){
                     System.out.println("You can now choose the service you want:");
                     System.out.println("1-Sorting algorithm analysis");
-                    System.out.println("2-Sort in ascending or descending order");
-                    System.out.println("3-Compare 2 Sorting Algorithms Performance");
-                    System.out.println("4-Search for an Element in the Sorted Array");
-                    int choice2 = getChoice(4);
+                    System.out.println("2-Compare 2 Sorting Algorithms Performance");
+                    int choice2 = getChoice(2);
                     SortingAlgos sortingAlgos = new SortingAlgos(array);
                     if (choice2 == 1){
                         System.out.println("\n-->Choose a sorting algorithm:\n" + sort_algorithms);
@@ -64,10 +61,32 @@ public class Main {
                             sortingAlgos.shellSort();
                         }else if (choose_algorithm == 5){
                             sortingAlgos.mergeSort();
-                        }else if (choose_algorithm == 6){
-                            sortingAlgos.bubbleSort();
                         }
+                    } else if (choice2 == 2) {
+                        System.out.println("Choose the first algorithm:\n" + sort_algorithms);
+                        int first_algo = getChoice(6);
+
+                        System.out.println("Choose the second algorithm:\n" + sort_algorithms);
+                        int second_algo = getChoice(6);
+
+                        String[] algorithms = {"selection", "insertion", "bubble", "shell", "merge"};
+
+                        String algo1 = (first_algo >= 1 && first_algo <= 5) ? algorithms[first_algo - 1] : "";
+                        String algo2 = (second_algo >= 1 && second_algo <= 5) ? algorithms[second_algo - 1] : "";
+
+                        while (true){
+                            if (first_algo == second_algo){
+                                System.out.println("Choose another algorithm to compare with " + first_algo);
+                                System.out.println(sort_algorithms);
+                                second_algo = getChoice(6);
+                            }else {
+                                break;
+                            }
+                        }
+                        SortingAlgos compare = new SortingAlgos(array);
+                        compare.compareSortingPerformance(algo1, algo2);
                     }
+
                     System.out.println("Do you want to:");
                     System.out.println("1-Choose another service");
                     System.out.println("2-Create an new array");
