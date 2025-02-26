@@ -63,10 +63,10 @@ public class Main {
                             sortingAlgos.mergeSort();
                         }
                     } else if (choice2 == 2) {
-                        System.out.println("Choose the first algorithm:\n" + sort_algorithms);
+                        System.out.println("\nChoose the first algorithm:\n" + sort_algorithms);
                         int first_algo = getChoice(6);
 
-                        System.out.println("Choose the second algorithm:\n" + sort_algorithms);
+                        System.out.println("\nChoose the second algorithm:\n" + sort_algorithms);
                         int second_algo = getChoice(6);
 
                         String[] algorithms = {"selection", "insertion", "bubble", "shell", "merge"};
@@ -76,7 +76,7 @@ public class Main {
 
                         while (true){
                             if (first_algo == second_algo){
-                                System.out.println("Choose another algorithm to compare with " + first_algo);
+                                System.out.println("\nChoose another algorithm to compare with " + first_algo);
                                 System.out.println(sort_algorithms);
                                 second_algo = getChoice(6);
                             }else {
@@ -84,7 +84,7 @@ public class Main {
                             }
                         }
                         SortingAlgos compare = new SortingAlgos(array);
-                        compare.compareSortingPerformance(algo1, algo2);
+                        compare.compareSort(algo1, algo2);
                     }
 
                     System.out.println("Do you want to:");
@@ -106,16 +106,15 @@ public class Main {
     }
 
     // Function to handle the wrong choice of the user
-    static int getChoice(int range) {
+    public static int getChoice(int range) {
         int choice;
         while(true){
             try {
-                System.out.print("Enter your choice: ");
                 choice = scanner.nextInt();
 
                 if (choice < 1 || choice > range) {
                     System.err.println("Invalid choice! Please enter a number between 1 and " + range + ":");
-                    continue;  // Restart loop
+                    continue;
                 }
                 break;
             } catch (InputMismatchException e) {

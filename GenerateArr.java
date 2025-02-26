@@ -1,25 +1,28 @@
+import java.util.InputMismatchException;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.Scanner;
 
 public class GenerateArr {
-    Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
     int size;
     int[] arr;
 
     public GenerateArr() {}
+    // function to generate a random array
     public void generateArr() {
         System.out.println("Enter the size of the array");
-        size = scanner.nextInt();
+        size = getSize();
         arr = new int[size];
         for (int i = 0; i < size; i++) {
-            // Generate numbers from 1 to 20
+            // Generate random numbers from 1 to 20
             arr[i] = ThreadLocalRandom.current().nextInt(1, 21);
         }
         printArr();
     }
+    // function to create array from the input of the user
     public void createArr() {
         System.out.println("Enter the size of the array");
-        size = scanner.nextInt();
+        size = getSize();
         arr = new int[size];
         System.out.println("-> Enter your array seperated by spaces: ");
         while (true) {
@@ -47,4 +50,20 @@ public class GenerateArr {
         }
         System.out.println(")");
     }
+    public static int getSize() {
+        int size;
+        while (true) {
+            try {
+                size = scanner.nextInt();
+                break;
+            } catch (InputMismatchException e) {
+                System.err.println("Invalid input! Please enter a valid number:");
+                // Clear invalid input
+                scanner.nextLine();
+            }
+        }
+        return size;
+    }
+
 }
+
